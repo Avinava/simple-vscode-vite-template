@@ -1,0 +1,72 @@
+{
+  "name": "simple-vscode-vite-template",
+  "displayName": "Simple VS Code Vite Template",
+  "description": "A quick-start template for building VS Code extensions with Vite and modern tooling",
+  "version": "0.1.0",
+  "publisher": "Avinava",
+  "author": {
+    "name": "Avi"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:vscode-template.openPanel"
+  ],
+  "main": "./out/extension/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-template.openPanel",
+        "title": "Open Example Panel",
+        "category": "Template"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "npm run build:extension && npm run build:webview",
+    "build:extension": "tsc -p tsconfig.extension.json",
+    "build:webview": "cd webview-ui && npm run build",
+    "watch": "concurrently \"npm run watch:extension\" \"npm run watch:webview\"",
+    "watch:extension": "tsc -watch -p tsconfig.extension.json",
+    "watch:webview": "cd webview-ui && npm run dev",
+    "lint": "eslint src --ext ts",
+    "format": "prettier --write \"src/**/*.ts\" \"webview-ui/src/**/*.{ts,tsx}\"",
+    "package": "vsce package",
+    "deploy": "vsce publish",
+    "install:all": "npm install && cd webview-ui && npm install",
+    "clean": "rm -rf out node_modules webview-ui/node_modules webview-ui/dist"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Avinava/simple-vscode-vite-template"
+  },
+  "bugs": {
+    "url": "https://github.com/Avinava/simple-vscode-vite-template/issues"
+  },
+  "icon": "assets/icons/icon-128.png",
+  "keywords": [
+    "vscode-extension",
+    "template",
+    "vite",
+    "webview",
+    "typescript"
+  ]
+}
